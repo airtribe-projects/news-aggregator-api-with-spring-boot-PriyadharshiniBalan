@@ -1,0 +1,57 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LOGIN / REGISTER
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Add User : POST
+------------------
+curl -X POST "http://localhost:8082/api/register" -d "{\"name\":\"Priya\",\"email\":\"priya@gmail.com\",\"password\":\"priya\"}" -H "Content-Type: application/json" -vvv
+
+
+TOKEN Verification : POST:
+--------------------------
+curl -X POST "http://localhost:8082/api/verifyRegistration?token=eac7f9b0-7bd0-4010-ace2-d37426c90a44" -H "Content-Type: application/json" -vvv
+
+
+SignIn : POST
+-------------
+curl -X POST "http://localhost:8082/api/login?email=priya@gmail.com&password=priya" -H "Content-Type: application/json" -vvv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PREFERENCE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Add Preference : POST
+----------------------
+curl -X POST "http://localhost:8082/api/preferences" -d "{\"category\":\"technology\",\"country\":\"us\",\"topic\":\"tesla\"}" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+Get Preference : Get
+--------------------
+curl -X GET "http://localhost:8082/api/preferences" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+Update Preference : PUT
+-----------------------
+curl -X PUT "http://localhost:8082/api/preferences" -d "{\"category\":null,\"country\":\"in\",\"topic\":null}" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NEWS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Get News Based on User Preference : Get
+---------------------------------------
+curl -X GET "http://localhost:8082/api/news" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8082/api/news/1/read" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8082/api/news/1/favorite" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8082/api/news/read" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8082/api/news/favorites" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcml5YUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjU2OTUsImV4cCI6MTczMjk1MjA5NX0.1Y3Q1cHWxu4sLfklxh_Bd6tAvEH4E-IP2Ja2gxt8rrM" -H "Content-Type: application/json" -vvv
+
+---------------------
+DB:
+---
+SELECT * FROM "user" ;
+SELECT * FROM NEWS_ARTICLE ;
+SELECT * FROM PREFERENCE ;
+SELECT * FROM VERIFICATION_TOKEN;
